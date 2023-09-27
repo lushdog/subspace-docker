@@ -16,7 +16,8 @@ services:
       - IS_ARM=${IS_ARM:-no}
       - IS_SKYLAKE=${IS_SKYLAKE:-true}
     command:
-      - " " 
+      - "--cache-percentage"
+      - "1"
       # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
       # - "path=/subspace2,size=100G"
       # - "--cache-percentage"

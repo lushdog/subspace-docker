@@ -11,6 +11,8 @@ farmer可以连接远程的node，所以能够只单独运行farmer程序。
 
 `docker build . -f Dockerfile.farm --tag subspace-farmer --no-cache`
 
+`docker build . -f Dockerfile.farm --tag subspace-farmer --no-cache --build-arg IS_SKYLAKE=no`
+
 ### 运行
 
 `docker compose up -d farmer`

@@ -1,8 +1,10 @@
 FROM node:slim AS builder
 
 ARG IS_ARM
-
 ARG IS_SKYLAKE
+
+ENV IS_ARM=$IS_ARM
+ENV IS_SKYLAKE=$IS_SKYLAKE
 
 WORKDIR /app
 

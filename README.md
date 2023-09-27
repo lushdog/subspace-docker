@@ -3,7 +3,8 @@ Dockerfile for subspace
 
 ## farmer
 
-farmer连接远程的node，所以可以只单独运行farmer程序。注意node需要添加参数才可以被远程链接
+farmer可以连接远程的node，所以能够只单独运行farmer程序。
+注意node需要添加参数才可以被远程链接
 `--rpc-cors all --unsafe-rpc-external --rpc-methods unsafe`
 
 ### 构建
@@ -13,3 +14,6 @@ farmer连接远程的node，所以可以只单独运行farmer程序。注意node
 ### 运行
 
 `docker compose up -d farmer`
+
+### 参数
+NODE_RPC_URL为远程node的rpc地址，格式为ws://ip:9944

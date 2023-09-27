@@ -14,8 +14,6 @@ RUN npm i zx -g && zx download.mjs farmer
 
 FROM ubuntu:22.04
 
-ARG ARM=no
-
 RUN apt update && apt install -y ca-certificates && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

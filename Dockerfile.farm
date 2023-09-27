@@ -1,8 +1,8 @@
 FROM node:slim AS builder
 
-ENV IS_ARM
+ARG IS_ARM
 
-ENV IS_SKYLAKE
+ARG IS_SKYLAKE
 
 WORKDIR /app
 

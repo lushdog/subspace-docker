@@ -6,6 +6,8 @@ services:
       context: .
     networks:
       - sp_network
+     ports:
+      - "30533:30533"
     privileged: true
     volumes:
       - ${PLOT_PATH:./data}:/app/plot

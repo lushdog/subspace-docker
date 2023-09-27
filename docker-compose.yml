@@ -15,6 +15,13 @@ services:
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
       - IS_ARM=${IS_ARM:-no}
       - IS_SKYLAKE=${IS_SKYLAKE:-true}
+    command:
+      # 添加其他参数
+      # - "path=/subspace2,size=100G"
+      # - "--cache-percentage"
+      # - "2"
+      # - "--listen-on"
+      # - "/ip4/0.0.0.0/tcp/30533"
     restart: unless-stopped
 
 networks:

@@ -2,21 +2,19 @@ version: '3.7'
 services:
   farmer:
     image: subspace-farmer
-    build:
-      context: .
     networks:
       - sp_network
-     ports:
+    ports:
       - "30533:30533"
     privileged: true
     volumes:
-      - ${PLOT_PATH:./data}:/app/plot
+      - ${PLOT_PATH:-./data}:/app/plot
     environment:
       - REWARD_ADDRESS=${REWARD_ADDRESS:?please make sure to set your REWARD_ADDRESS environment variable in the .env file}
       - NODE_RPC_URL=${NODE_RPC_URL}
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
-      - IS_ARM=${IS_ARM:no}
-      - IS_SKYLAKE=${IS_SKYLAKE:true}
+      - IS_ARM=${IS_ARM:-no}
+      - IS_SKYLAKE=${IS_SKYLAKE:-true}
     restart: unless-stopped
 
 networks:

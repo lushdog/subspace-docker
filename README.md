@@ -30,7 +30,7 @@ farmer可以连接远程的node，所以开一个node就够用。
 
 `docker build . -f Dockerfile.node --tag subspace-node --no-cache --build-arg IS_SKYLAKE=no`
 
-### 运行farmer
+### 运行node
 
 `docker compose up -d node`
 

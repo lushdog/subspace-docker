@@ -23,6 +23,42 @@ services:
       # - "--listen-on"
       # - "/ip4/0.0.0.0/tcp/30533"
     restart: unless-stopped
+  
+  # node:
+  #   image: subspace-node
+  #   networks:
+  #     - sp_network
+  #    ports:
+  #     - "0.0.0.0:30333:30333"
+  #     - "0.0.0.0:30433:30433"
+  #     - "0.0.0.0:9944:9944"
+  #   privileged: true
+  #   volumes:
+  #     - ${NODE_BASE_PATH:-./node_data}:/app/node_data
+  #   environment:
+  #     - NODE_BASE_PATH=${NODE_BASE_PATH:?please make sure to set your NODE_BASE_PATH environment variable in the .env file}
+  #   command:
+  #     "--chain",
+  #     "gemini-3f",
+  #     "--base-path",
+  #     "/app/node_data",
+  #     "--execution",
+  #     "wasm",
+  #     "--blocks-pruning",
+  #     "256",
+  #     "--state-pruning",
+  #     "archive",
+  #     "--port",
+  #     "30333",
+  #     "--dsn-listen-on",
+  #     "/ip4/0.0.0.0/tcp/30433",
+  #     "--rpc-cors",
+  #     "all",
+  #     "--rpc-methods",
+  #     "unsafe",
+  #     "--rpc-external",
+  #     "--validator",
+  #   restart: unless-stopped
 
 networks:
   sp_network:

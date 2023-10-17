@@ -1,0 +1,35 @@
+FROM node:slim AS builder
+
+ARG IS_ARM
+ARG IS_SKYLAKE
+
+ENV IS_ARM=$IS_ARM
+ENV IS_SKYLAKE=$IS_SKYLAKE
+
+WORKDIR /app
+
+COPY download.mjs .
+
+RUN apt update && apt install -y wget && rm -rf /var/lib/apt/lists/*
+
+RUN npm i zx -g && zx download.mjs node
+
+FROM ubuntu:22.04
+
+RUN apt update && apt install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY --from=builder /app/node .
+
+COPY node.entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+RUN chmod +x node
+
+EXPOSE 30533
+EXPOSE 30433
+EXPOSE 9944
+
+ENTRYPOINT ["/entrypoint.sh"]

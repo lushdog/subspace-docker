@@ -14,8 +14,7 @@ services:
       - NODE_RPC_URL=${NODE_RPC_URL}
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
     command:
-      - "--cache-percentage"
-      - "1"
+      - "--farm-during-initial-plotting"
       # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
       # - "path=/subspace2,size=100G"
       # - "--cache-percentage"

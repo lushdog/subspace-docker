@@ -47,7 +47,7 @@ services:
   #     - "--blocks-pruning"
   #     - "256"
   #     - "--state-pruning"
-  #     - "archive"
+  #     - "archive-canonical"
   #     - "--port"
   #     - "30333"
   #     - "--dsn-listen-on"

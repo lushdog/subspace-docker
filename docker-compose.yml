@@ -44,8 +44,6 @@ services:
   #     - "gemini-3g"
   #     - "--base-path"
   #     - "/app/node_data"
-  #     - "--execution"
-  #     - "wasm"
   #     - "--blocks-pruning"
   #     - "256"
   #     - "--state-pruning"

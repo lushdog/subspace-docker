@@ -5,7 +5,7 @@ services:
     networks:
       - sp_network
     ports:
-      - "30533:30533"
+      - "20185:20185"
     privileged: true
     volumes:
       - ${PLOT_PATH:-./data}:/app/plot
@@ -15,12 +15,14 @@ services:
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
     command:
       - "--farm-during-initial-plotting"
+      - "--listen-on"
+      - "/ip4/0.0.0.0/tcp/20185"
+      - "--listen-on"
+      - "/ip4/0.0.0.0/udp/20185/quic-v1"
       # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
       # - "path=/subspace2,size=100G"
       # - "--cache-percentage"
       # - "2"
-      # - "--listen-on"
-      # - "/ip4/0.0.0.0/tcp/30533"
     restart: unless-stopped
   
   # node:
@@ -28,10 +30,10 @@ services:
   #   networks:
   #     - sp_network
   #   ports:
-  #     - "0.0.0.0:30333:30333/tcp"
-  #     - "0.0.0.0:30333:30333/udp"
-  #     - "0.0.0.0:30433:30433/tcp"
-  #     - "0.0.0.0:30433:30433/udp"
+  #     - "0.0.0.0:21168:21168/tcp"
+  #     - "0.0.0.0:21168:21168/udp"
+  #     - "0.0.0.0:21165:21165/tcp"
+  #     - "0.0.0.0:21165:21165/udp"
   #     - "0.0.0.0:9944:9944"
   #   privileged: true
   #   volumes:
@@ -49,9 +51,11 @@ services:
   #     - "--state-pruning"
   #     - "archive-canonical"
   #     - "--port"
-  #     - "30333"
+  #     - "21165"
   #     - "--dsn-listen-on"
-  #     - "/ip4/0.0.0.0/tcp/30433"
+  #     - "/ip4/0.0.0.0/tcp/21168"
+  #     - "--dsn-listen-on"
+  #     - "/ip4/0.0.0.0/udp/21168/quic-v1"
   #     - "--rpc-cors"
   #     - "all"
   #     - "--rpc-methods"

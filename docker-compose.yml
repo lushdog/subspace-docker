@@ -15,6 +15,7 @@ services:
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
     command:
       - "--farm-during-initial-plotting"
+      - "true"
       - "--listen-on"
       - "/ip4/0.0.0.0/tcp/20185"
       - "--listen-on"

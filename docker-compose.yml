@@ -51,7 +51,7 @@ services:
   #     - "256"
   #     - "--state-pruning"
   #     - "archive-canonical"
-  #     - "--port"
+  #     - "--listen-on"
   #     - "21165"
   #     - "--dsn-listen-on"
   #     - "/ip4/0.0.0.0/tcp/21168"
@@ -61,8 +61,7 @@ services:
   #     - "all"
   #     - "--rpc-methods"
   #     - "unsafe"
-  #     - "--unsafe-rpc-external"
-  #     - "--validator"
+  #     - "--farmer"
   #   restart: unless-stopped
 
 networks:

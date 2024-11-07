@@ -40,15 +40,24 @@ services:
   #   environment:
   #     - NODE_NAME=${NODE_NAME:?please make sure to set your NODE_NAME environment variable in the .env file}
   #   command:
-  #     - "--chain mainnet"
-  #     - "--base-path /app/node_data"
-  #     - "--sync full"
-  #     - "--listen-on /ip4/0.0.0.0/tcp/21165"
-  #     - "--dsn-listen-on /ip4/0.0.0.0/tcp/21168"
-  #     - "--dsn-listen-on /ip4/0.0.0.0/udp/21168/quic-v1"
-  #     - "--rpc-listen-on 0.0.0.0:8934"
-  #     - "--rpc-cors all"
-  #     - "--rpc-methods unsafe"
+  #     - "--chain"
+  #     - "mainnet"
+  #     - "--base-path"
+  #     - "/app/node_data"
+  #     - "--sync"
+  #     - "full"
+  #     - "--listen-on"
+  #     - "/ip4/0.0.0.0/tcp/21165"
+  #     - "--dsn-listen-on"
+  #     - "/ip4/0.0.0.0/tcp/21168"
+  #     - "--dsn-listen-on"
+  #     - "/ip4/0.0.0.0/udp/21168/quic-v1"
+  #     - "--rpc-listen-on"
+  #     - "0.0.0.0:8934"
+  #     - "--rpc-cors"
+  #     - "all"
+  #     - "--rpc-methods"
+  #     - "unsafe"
   #     - "--farmer"
   #   restart: unless-stopped
 

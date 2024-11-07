@@ -10,7 +10,7 @@ services:
     volumes:
       - ${PLOT_PATH:-./data}:/app/plot
       # 添加其他path
-      - /disk2/plot:/app/plot2
+      # - /disk2/plot:/app/plot2
     environment:
       - REWARD_ADDRESS=${REWARD_ADDRESS:?please make sure to set your REWARD_ADDRESS environment variable in the .env file}
       - NODE_RPC_URL=${NODE_RPC_URL}

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   farmer:
-    image: subspace-farmer
+    image: trancelife/subspace-farmer:latest
     networks:
       - sp_network
     ports:
@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
   
   # node:
-  #   image: subspace-node
+  #   image: trancelife/subspace-node:latest
   #   networks:
   #     - sp_network
   #   ports:

@@ -1,0 +1,71 @@
+version: '3.7'
+services:
+  farmer:
+    image: trancelife/subspace-farmer:latest
+    networks:
+      - sp_network
+    ports:
+      - "20185:20185"
+    privileged: true
+    volumes:
+      - ${PLOT_PATH:-./data}:/app/plot
+      # 添加其他path
+      # - /disk2/plot:/app/plot2
+    environment:
+      - REWARD_ADDRESS=${REWARD_ADDRESS:?please make sure to set your REWARD_ADDRESS environment variable in the .env file}
+      - NODE_RPC_URL=${NODE_RPC_URL}
+      - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
+    command:
+      - "--listen-on /ip4/0.0.0.0/tcp/20185"
+      - "ip4/0.0.0.0/tcp/20185"
+      - "--listen-on"
+      - "/ip4/0.0.0.0/udp/20185/quic-v1"
+      - "--in-connections"
+      - "50"
+      - "--out-connections"
+      - "30"
+      # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
+      # - "path=/app/plot2,size=100G"
+      # - "--cache-percentage"
+      # - "2"
+    restart: unless-stopped
+  
+  node:
+    image: trancelife/subspace-node:latest
+    networks:
+      - sp_network
+    ports:
+      - "0.0.0.0:21168:21168/tcp"
+      - "0.0.0.0:21168:21168/udp"
+      - "0.0.0.0:21165:21165/tcp"
+      - "0.0.0.0:21165:21165/udp"
+      - "0.0.0.0:8934:8934"
+    privileged: true
+    volumes:
+      - ./node_data:/app/node_data
+    environment:
+      - NODE_NAME=${NODE_NAME:?please make sure to set your NODE_NAME environment variable in the .env file}
+    command:
+      - "--chain"
+      - "mainnet"
+      - "--base-path"
+      - "/app/node_data"
+      - "--sync"
+      - "full"
+      - "--listen-on"
+      - "/ip4/0.0.0.0/tcp/21165"
+      - "--dsn-listen-on"
+      - "/ip4/0.0.0.0/tcp/21168"
+      - "--dsn-listen-on"
+      - "/ip4/0.0.0.0/udp/21168/quic-v1"
+      - "--rpc-listen-on"
+      - "0.0.0.0:8934"
+      - "--rpc-cors"
+      - "all"
+      - "--rpc-methods"
+      - "unsafe"
+      - "--farmer"
+    restart: unless-stopped
+
+networks:
+  sp_network:

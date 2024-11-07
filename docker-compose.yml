@@ -9,19 +9,17 @@ services:
     privileged: true
     volumes:
       - ${PLOT_PATH:-./data}:/app/plot
+      # 添加其他path
+      - /disk2/plot:/app/plot2
     environment:
       - REWARD_ADDRESS=${REWARD_ADDRESS:?please make sure to set your REWARD_ADDRESS environment variable in the .env file}
       - NODE_RPC_URL=${NODE_RPC_URL}
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
     command:
-      - "--farm-during-initial-plotting"
-      - "true"
-      - "--listen-on"
-      - "/ip4/0.0.0.0/tcp/20185"
-      - "--listen-on"
-      - "/ip4/0.0.0.0/udp/20185/quic-v1"
+      - "--listen-on /ip4/0.0.0.0/tcp/20185"
+      - "--listen-on /ip4/0.0.0.0/udp/20185/quic-v1"
       # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
-      # - "path=/subspace2,size=100G"
+      # - "path=/app/plot2,size=100G"
       # - "--cache-percentage"
       # - "2"
     restart: unless-stopped
@@ -35,32 +33,22 @@ services:
   #     - "0.0.0.0:21168:21168/udp"
   #     - "0.0.0.0:21165:21165/tcp"
   #     - "0.0.0.0:21165:21165/udp"
-  #     - "0.0.0.0:9944:9944"
+  #     - "0.0.0.0:8934:8934"
   #   privileged: true
   #   volumes:
-  #     - ${NODE_BASE_PATH:-./node_data}:/app/node_data
+  #     - ./node_data:/app/node_data
   #   environment:
-  #     - NODE_BASE_PATH=${NODE_BASE_PATH:?please make sure to set your NODE_BASE_PATH environment variable in the .env file}
   #     - NODE_NAME=${NODE_NAME:?please make sure to set your NODE_NAME environment variable in the .env file}
   #   command:
-  #     - "--chain"
-  #     - "gemini-3g"
-  #     - "--base-path"
-  #     - "/app/node_data"
-  #     - "--blocks-pruning"
-  #     - "256"
-  #     - "--state-pruning"
-  #     - "archive-canonical"
-  #     - "--listen-on"
-  #     - "21165"
-  #     - "--dsn-listen-on"
-  #     - "/ip4/0.0.0.0/tcp/21168"
-  #     - "--dsn-listen-on"
-  #     - "/ip4/0.0.0.0/udp/21168/quic-v1"
-  #     - "--rpc-cors"
-  #     - "all"
-  #     - "--rpc-methods"
-  #     - "unsafe"
+  #     - "--chain mainnet"
+  #     - "--base-path /app/node_data"
+  #     - "--sync full"
+  #     - "--listen-on /ip4/0.0.0.0/tcp/21165"
+  #     - "--dsn-listen-on /ip4/0.0.0.0/tcp/21168"
+  #     - "--dsn-listen-on /ip4/0.0.0.0/udp/21168/quic-v1"
+  #     - "--rpc-listen-on 0.0.0.0:8934"
+  #     - "--rpc-cors all"
+  #     - "--rpc-methods unsafe"
   #     - "--farmer"
   #   restart: unless-stopped
 

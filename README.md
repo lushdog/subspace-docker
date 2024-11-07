@@ -1,12 +1,6 @@
 # subspace-docker
 Dockerfile for subspace
 
-## farmer
-
-farmer可以连接远程的node，所以能够只单独运行farmer程序。
-注意node需要添加参数才可以被远程链接
-`--rpc-cors all --unsafe-rpc-external --rpc-methods unsafe`
-
 ### 构建farmer
 
 `docker build . -f Dockerfile.farm --tag subspace-farmer --no-cache`
@@ -27,7 +21,7 @@ PLOT_SIZE plot大小
 `docker compose up -d farmer`
 
 
-## node
+## node 默认已经注释。默认不运行node
 
 farmer可以连接远程的node，所以开一个node就够用。
 
@@ -44,5 +38,4 @@ farmer可以连接远程的node，所以开一个node就够用。
 `docker compose up -d node`
 
 ### 参数
-NODE_BASE_PATH为存储数据的地方
 NODE_NAME node唯一的名字

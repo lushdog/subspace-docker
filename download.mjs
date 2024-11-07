@@ -23,6 +23,7 @@ const download = async () => {
   const relases = await fetch(RELEASES_URL).then((res) => res.json())
   const allRelases = relases.assets
     .filter((item) => item.name.includes(downloadType))
+    .filter((item) => !item.name.includes('rocm'))
     .map((item) => ({
       name: item.name,
       browser_download_url: item.browser_download_url,

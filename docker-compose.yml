@@ -17,7 +17,9 @@ services:
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
     command:
       - "--listen-on /ip4/0.0.0.0/tcp/20185"
-      - "--listen-on /ip4/0.0.0.0/udp/20185/quic-v1"
+      - "ip4/0.0.0.0/tcp/20185"
+      - "--listen-on"
+      - "/ip4/0.0.0.0/udp/20185/quic-v1"
       # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
       # - "path=/app/plot2,size=100G"
       # - "--cache-percentage"

@@ -17,7 +17,7 @@ services:
       - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
     command:
       - "--listen-on"
-      - "ip4/0.0.0.0/tcp/20185"
+      - "/ip4/0.0.0.0/tcp/20185"
       - "--listen-on"
       - "/ip4/0.0.0.0/udp/20185/quic-v1"
       - "--in-connections"

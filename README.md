@@ -24,3 +24,7 @@ farmer可以连接远程的node，所以开一个node就够用。
 
 ### 参数
 NODE_NAME node唯一的名字
+
+### 如果我来不及上传新版本镜像，可以本地自己编译，执行`bash build.sh`
+
+`docker compose up -d`

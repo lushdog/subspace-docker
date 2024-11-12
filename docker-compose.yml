@@ -50,8 +50,6 @@ services:
   #     - "mainnet"
   #     - "--base-path"
   #     - "/app/node_data"
-  #     - "--sync"
-  #     - "full"
   #     - "--listen-on"
   #     - "/ip4/0.0.0.0/tcp/21165"
   #     - "--dsn-listen-on"

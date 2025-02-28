@@ -1,35 +1,5 @@
 version: '3.7'
 services:
-  farmer:
-    image: trancelife/subspace-farmer:latest
-    networks:
-      - sp_network
-    ports:
-      - "20185:20185"
-    privileged: true
-    volumes:
-      - ${PLOT_PATH:-./data}:/app/plot
-      # 添加其他path
-      # - /disk2/plot:/app/plot2
-    environment:
-      - REWARD_ADDRESS=${REWARD_ADDRESS:?please make sure to set your REWARD_ADDRESS environment variable in the .env file}
-      - NODE_RPC_URL=${NODE_RPC_URL}
-      - PLOT_SIZE=${PLOT_SIZE:?please make sure to set your PLOT_SIZE environment variable in the .env file}
-    command:
-      - "--listen-on"
-      - "/ip4/0.0.0.0/tcp/20185"
-      - "--listen-on"
-      - "/ip4/0.0.0.0/udp/20185/quic-v1"
-      - "--in-connections"
-      - "50"
-      - "--out-connections"
-      - "30"
-      # 这里可以添加其他参数，添加其他path,注意添加path要在volumes映射
-      # - "path=/app/plot2,size=100G"
-      # - "--cache-percentage"
-      # - "2"
-    restart: unless-stopped
-  
   node:
     image: trancelife/subspace-node:latest
     networks:

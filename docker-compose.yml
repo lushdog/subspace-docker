@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   farmer:
-    image: trancelife/subspace-farmer:latest
+    image: ghcr.io/lushdog/subspace-farmer:latest
     networks:
       - sp_network
     ports:
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
   
   # node:
-  #   image: trancelife/subspace-node:latest
+  #   image: ghcr.io/lushdog/subspace-node:latest
   #   networks:
   #     - sp_network
   #   ports:
